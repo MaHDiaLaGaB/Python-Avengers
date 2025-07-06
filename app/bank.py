@@ -1,3 +1,8 @@
+class DepositError(Exception):
+    """Deposit error the value is maybe in (-)"""
+    def __init__(self, message="Deposit error the value is maybe in (-)"):
+        super().__init__(message)
+
 
 class BankAccount:
     bank_name = "Global Bank"
@@ -10,7 +15,7 @@ class BankAccount:
 
     def deposit(self, amount: float):
         if amount <= 0:
-            raise ValueError("deposit amount must be positive")
+            raise DepositError(message="no enough money")
         self.balance += amount
         print(f"the {amount} has been deposited to ur account")
 
@@ -30,13 +35,41 @@ class BankAccount:
         to_account.balance += amount
         print(f"{amount} has been transfered to the account {to_account.owner}")
     
-ac_1 = BankAccount("mohamed", 2000.0)
-ac_2 = BankAccount("sanad", 4500.0)
-ac_3 = BankAccount("anam")
+    def __str__(self):
+        return f"Account Owner: {self.owner}\nBalance is {self.balance}"
+    
+    def __repr__(self):
+        return "hello i am reper"
+try:
+    print("creating account")
+    ac_1 = BankAccount("mohamed", 2000.0)
+    ac_2 = BankAccount("sanad", 4500.0)
+    ac_3 = BankAccount("anam")
+    ac_4 = "any account"
 
-# ac_1.deposit(3.0)
-# print(ac_1.balance)
+    print("try to deposit (-) amount")
+    ac_1.deposit(50)
+    print(ac_1)
 
-ac_2.transfer(ac_3, 500)
+    print("try to withdraw on red")
+    ac_2.withdraw(500)
 
-print(ac_3.balance)
+    print("transfer more than we have")
+    ac_1.transfer(ac_2, 2000)
+    print(ac_2)
+
+except DepositError as de:
+    print("it's value error", de)
+
+except TypeError as te:
+    print("it's type error", te)
+
+except Exception as e:
+    print("it's general error")
+
+else:
+    print("all banck op has been done")
+
+finally:
+    print("final account states")
+    BankAccount.accounts
