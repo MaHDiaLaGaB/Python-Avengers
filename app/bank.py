@@ -1,3 +1,12 @@
+import logging
+
+logging.basicConfig(
+    level=logging.DEBUG,
+    filename="my_app.log",
+    format="%(asctime)s - %(levelname)s - %(message)s",
+    filemode="a"
+    )
+
 class DepositError(Exception):
     """Deposit error the value is maybe in (-)"""
     def __init__(self, message="Deposit error the value is maybe in (-)"):
@@ -9,15 +18,18 @@ class BankAccount:
     accounts = []
 
     def __init__(self, owner: str, balance: float = 0.0):
+        logging.info("bank is open")
         self.owner = owner
         self.balance = balance
         BankAccount.accounts.append(self)
 
     def deposit(self, amount: float):
         if amount <= 0:
+            logging.error("no money")
             raise DepositError(message="no enough money")
         self.balance += amount
-        print(f"the {amount} has been deposited to ur account")
+        logging.info(f"the {amount} has been deposited to ur account")
+        
 
     def withdraw(self, amount: float):
         if amount >= self.balance:

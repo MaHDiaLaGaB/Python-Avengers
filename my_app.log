@@ -1,0 +1,9 @@
+2025-07-07 15:19:16,922 - INFO - we just start logging the user ahmed
+2025-07-07 15:19:16,923 - DEBUG - lets close the function
+2025-07-07 15:19:16,923 - WARNING - this is warning
+2025-07-07 15:19:16,923 - ERROR - this is error
+2025-07-07 15:23:01,399 - INFO - bank is open
+2025-07-07 15:23:01,399 - INFO - bank is open
+2025-07-07 15:23:01,399 - INFO - bank is open
+2025-07-07 15:23:01,399 - INFO - the 50 has been deposited to ur account
+2025-07-07 16:18:53,342 - INFO - this is the function name we called say_hi

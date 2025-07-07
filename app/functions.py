@@ -1,8 +1,10 @@
+from logging_decorators import decorator
+
 def greet(name):
     print(f"helloo {name} in python")
 
 # greet("ali")
-
+@decorator
 def add(a: float, b: int):
     return a + b
 
