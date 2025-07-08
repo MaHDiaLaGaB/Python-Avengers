@@ -1,13 +1,22 @@
 from datetime import datetime as dt
 import logging
+from functools import reduce
 
 logging.basicConfig(
     level=logging.DEBUG,
     filename="map.log"
 )
 
-nums = [x for x in range(20000)]
+nums = [x for x in range(1, 20)]
+"""reduce"""
+total = reduce(lambda a, b: a + b, nums)
+print(total)
 
+"""filter"""
+even = list(filter(lambda x: x % 2 == 0, nums))
+print(even)
+
+"""map"""
 logging.info(f"start the for in {dt.now()}")
 sq_nums = []
 for i in nums:
