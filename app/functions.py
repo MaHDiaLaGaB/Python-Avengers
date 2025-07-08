@@ -1,8 +1,10 @@
 from logging_decorators import decorator
+import lambdaa
 
 def greet(name):
     print(f"helloo {name} in python")
 
+lambdaa.password()
 # greet("ali")
 @decorator
 def add(a: float, b: int):

@@ -1,3 +1,9 @@
+from mission_logging import (
+    log_mission, 
+    hack_satellite
+    )
+
+
 SECRET = "12345678"
 secret = input("enter you password! ")
 
